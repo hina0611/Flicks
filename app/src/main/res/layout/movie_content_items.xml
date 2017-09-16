@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/realtive_container_layout"
+        android:layout_margin="@dimen/marginTop">
+
+        <!--movie image-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_list_items"
+        android:src="@drawable/facebook"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/linear_movie_title_container"
+            android:orientation="horizontal">
+
+
+            <!--movie title-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Movie Title"
+            android:id="@+id/tv_movie_title"
+            android:layout_marginTop="@dimen/marginTop"
+            android:textSize="@dimen/text_size_16"
+            android:paddingRight="96dp"
+            android:layout_toRightOf="@id/img_list_items" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTop"
+            android:textSize="@dimen/text_size_16"
+            android:id="@+id/tv_movie_vote_average"
+            android:layout_toRightOf="@id/tv_movie_title"
+            android:layout_marginLeft="28dp"
+            android:text="6.5"/>
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:id="@+id/img_vote_average"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/star"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/tv_movie_vote_average"
+
+            />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf= "@id/img_list_items"
+            android:layout_below="@id/linear_movie_title_container">
+
+
+            <!--img release date"-->
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/img_release_date"
+                android:src="@drawable/calender"
+                />
+
+            <!--tv release date-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_release_date"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/tv_release_date"
+                android:text="Release date"/>
+
+            <!--movie overview description-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:id="@+id/tv_movie_overview_description"
+                android:layout_below="@id/tv_release_date"
+                android:text="Movie Description"/>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

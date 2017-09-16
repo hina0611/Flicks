@@ -5,4 +5,8 @@ package com.flicks.hinaikhan.flicks.util;
  */
 
 public class Constant {
+
+    public static int TYPE_NORMAL = 0;
+    public static int TYPE_POPULAR = 1;
+    public static int MOVIE_COUNT = 2;
 }
