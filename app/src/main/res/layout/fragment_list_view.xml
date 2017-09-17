@@ -5,22 +5,12 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.flicks.hinaikhan.flicks.ui.mvp.playingmovie.PlayingMovieActivity">
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
-        android:layout_gravity="center"
-        android:layout_width="368dp"
-        android:layout_height="wrap_content"
-        card_view:cardCornerRadius="4dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
 
         <ListView
             android:layout_width="match_parent"
@@ -29,8 +19,5 @@
 
         </ListView>
 
-
-        </android.support.v7.widget.CardView>
-
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>

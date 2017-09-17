@@ -1,14 +1,19 @@
-package com.flicks.hinaikhan.flicks.data.railers;
+package com.flicks.hinaikhan.flicks.data.trailers;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  * Created by hinaikhan on 9/15/17.
  */
 
-public class TrailersResponse {
+public class TrailersResponse implements Serializable {
 
     private int id;
+
+    @SerializedName("results")
     private TrailersResultsResponse[] trailersResultsResponse;
 
     public TrailersResponse(int id, TrailersResultsResponse[] trailersResultsResponse) {

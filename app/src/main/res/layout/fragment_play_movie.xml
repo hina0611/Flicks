@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,23 +13,23 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="18dp">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/img_view_trailer_item"
-        android:src="@drawable/facebook"/>
-
-        <!--text for user score-->
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/img_view_trailer_item"
-            android:layout_margin="16dp"
-            android:id="@+id/tv_user_score"
-            android:textSize="@dimen/text_size_22"
-            android:text="@string/user_score"/>
+            android:id="@+id/img_view_trailer_item"
+            android:src="@drawable/facebook"/>
 
-        <!--rating bar-->
+            <!--text for user score-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_view_trailer_item"
+                android:layout_margin="16dp"
+                android:id="@+id/tv_user_score"
+                android:textSize="@dimen/text_size_22"
+                android:text="@string/user_score"/>
+
+            <!--rating bar-->
             <RatingBar
                 android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"
@@ -57,63 +55,75 @@
 
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/overview"
+            android:text="@string/movie_title"
             android:layout_marginLeft="16dp"
-            android:id="@+id/tv_overview"
+            android:id="@+id/tv_tile"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="16dp"
             android:textSize="@dimen/text_size_20"/>
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/tv_tile"
+            android:id="@+id/tv_name"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="16dp"
+            android:textSize="@dimen/text_size_20"/>
+
+
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_below="@+id/tv_overview"
+            android:id="@+id/tv_overview_description"
+            android:layout_below="@+id/tv_name"
             android:layout_marginRight="16dp"
             android:textSize="@dimen/text_size_16"
             android:text="Overview Description"/>
 
 
-             </RelativeLayout>
+    </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/relative_images_layout"
-            android:layout_marginTop="16dp"
-            android:layout_below="@id/relative_movie_overview_title">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relative_images_layout"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/relative_movie_overview_title">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="55dp"
-                android:id="@+id/img_wishlist"
-                android:src="@drawable/wish_list"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="55dp"
+            android:id="@+id/img_wishlist"
+            android:src="@drawable/wish_list"/>
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_toRightOf="@id/img_wishlist"
-                android:layout_marginLeft="55dp"
-                android:id="@+id/img_favourite"
-                android:src="@drawable/favorite"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@id/img_wishlist"
+            android:layout_marginLeft="55dp"
+            android:id="@+id/img_favourite"
+            android:src="@drawable/favorite"/>
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_toRightOf="@id/img_favourite"
-                android:layout_marginLeft="55dp"
-                android:layout_marginRight="55dp"
-                android:id="@+id/img_play_trailer"
-                android:src="@drawable/calender"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@id/img_favourite"
+            android:layout_marginLeft="55dp"
+            android:layout_marginRight="55dp"
+            android:id="@+id/img_play_trailer"
+            android:src="@drawable/calender"/>
 
-
-        </RelativeLayout>
-
-
-
-        </RelativeLayout>
 
     </RelativeLayout>
+
+
+</LinearLayout>
+

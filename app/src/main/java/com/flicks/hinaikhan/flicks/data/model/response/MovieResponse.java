@@ -3,6 +3,8 @@ package com.flicks.hinaikhan.flicks.data.model.response;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Arrays;
 import java.util.Date;
 
@@ -13,10 +15,18 @@ import java.util.Date;
 public class MovieResponse{
 
     private final String TAG = MovieResponse.class.getSimpleName();
+
+    @SerializedName("results")
     private MovieResultResponse[] movieResponses;
+
     private int page;
+
+    @SerializedName("total_results")
     private int totalResults;
+
     private DateResponse dateResponse;
+
+    @SerializedName("total_pages")
     private int totalPages;
 
     public MovieResponse(){

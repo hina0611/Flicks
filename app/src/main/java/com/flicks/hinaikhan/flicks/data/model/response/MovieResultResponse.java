@@ -3,6 +3,9 @@ package com.flicks.hinaikhan.flicks.data.model.response;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -10,27 +13,35 @@ import java.util.Date;
  * Created by hinaikhan on 9/15/17.
  */
 
-public class MovieResultResponse  {
+public class MovieResultResponse  implements Serializable {
 
     private final String TAG = MovieResponse.class.getSimpleName();
 
+    @SerializedName("vote_count")
     private int voteCount;
     private int id;
     private boolean video;
+    @SerializedName("vote_average")
     private float voteAverage;
     private String title;
     private double popularity;
+    @SerializedName("poster_path")
     private String posterPath;
+    @SerializedName("original_language")
     private String originalLanguage;
+    @SerializedName("original_title")
     private String originalTitle;
-    private MovieGenreID[] movieGenreIDs;
+    @SerializedName("genre_ids")
+    private int[] movieGenreIDs;
+    @SerializedName("backdrop_path")
     private String backDropPath;
     private boolean adult;
     private String overview;
+    @SerializedName("release_date")
     private Date releaseDate;
 
     public MovieResultResponse(int voteCount, int id, boolean video, float voteAverage, String title, double popularity, String posterPath, String originalLanguage,
-                               String originalTitle, MovieGenreID[] movieGenreIDs,
+                               String originalTitle, int[] movieGenreIDs,
                                String backDropPath, boolean adult, String overview, Date releaseDate) {
         this.voteCount = voteCount;
         this.id = id;
@@ -120,11 +131,11 @@ public class MovieResultResponse  {
         this.originalTitle = originalTitle;
     }
 
-    public MovieGenreID[] getMovieGenreIDs() {
+    public int[] getMovieGenreIDs() {
         return movieGenreIDs;
     }
 
-    public void setMovieGenreIDs(MovieGenreID[] movieGenreIDs) {
+    public void setMovieGenreIDs(int[] movieGenreIDs) {
         this.movieGenreIDs = movieGenreIDs;
     }
 

@@ -1,13 +1,14 @@
-package com.flicks.hinaikhan.flicks.data.railers;
+package com.flicks.hinaikhan.flicks.data.trailers;
+
+import java.io.Serializable;
 
 /**
  * Created by hinaikhan on 9/15/17.
  */
 
-public class TrailersResultsResponse {
+public class TrailersResultsResponse implements Serializable{
 
-    private int idResults;
-    private int id;
+    private String id;
     private String iso_639_1;
     private String iso_3166_1;
     private String key;
@@ -16,8 +17,7 @@ public class TrailersResultsResponse {
     private int size;
     private String type;
 
-    public TrailersResultsResponse(int idResults, int id, String iso_639_1, String iso_3166_1, String key, String name, String site, int size, String type) {
-        this.idResults = idResults;
+    public TrailersResultsResponse(String id, String iso_639_1, String iso_3166_1, String key, String name, String site, int size, String type) {
         this.id = id;
         this.iso_639_1 = iso_639_1;
         this.iso_3166_1 = iso_3166_1;
@@ -28,19 +28,11 @@ public class TrailersResultsResponse {
         this.type = type;
     }
 
-    public int getIdResults() {
-        return idResults;
-    }
-
-    public void setIdResults(int idResults) {
-        this.idResults = idResults;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -103,8 +95,7 @@ public class TrailersResultsResponse {
     @Override
     public String toString() {
         return "TrailersResultsResponse{" +
-                "idResults=" + idResults +
-                ", id=" + id +
+                "id=" + id +
                 ", iso_639_1='" + iso_639_1 + '\'' +
                 ", iso_3166_1='" + iso_3166_1 + '\'' +
                 ", key='" + key + '\'' +

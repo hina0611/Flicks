@@ -2,70 +2,69 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/colorGrey"
     android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view_movie_container"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp"
+        card_view:contentPadding="8dp"
+        card_view:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:id="@+id/realtive_container_layout"
-        android:layout_margin="@dimen/marginTop">
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/linear_ImageView_Layout"
+            android:layout_height="wrap_content">
 
         <!--movie image-->
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/img_list_items"
-        android:src="@drawable/facebook"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"/>
+        />
 
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:gravity="center"
             android:id="@+id/linear_movie_title_container"
+            android:layout_below="@id/linear_ImageView_Layout"
             android:orientation="horizontal">
 
 
             <!--movie title-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Movie Title"
-            android:id="@+id/tv_movie_title"
-            android:layout_marginTop="@dimen/marginTop"
-            android:textSize="@dimen/text_size_16"
-            android:paddingRight="96dp"
-            android:layout_toRightOf="@id/img_list_items" />
+            <TextView
+                android:id="@+id/tv_movie_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTop"
+                android:layout_marginBottom="8dp"
+                android:text="Movie Title"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_20" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/marginTop"
-            android:textSize="@dimen/text_size_16"
-            android:id="@+id/tv_movie_vote_average"
-            android:layout_toRightOf="@id/tv_movie_title"
-            android:layout_marginLeft="28dp"
-            android:text="6.5"/>
 
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:id="@+id/img_vote_average"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/star"
-            android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@id/tv_movie_vote_average"
-
-            />
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf= "@id/img_list_items"
+            android:id="@+id/relative_movie_details"
             android:layout_below="@id/linear_movie_title_container">
 
 
@@ -84,7 +83,9 @@
                 android:layout_toRightOf="@id/img_release_date"
                 android:layout_marginLeft="16dp"
                 android:id="@+id/tv_release_date"
+                android:textSize="@dimen/text_size_18"
                 android:text="Release date"/>
+
 
             <!--movie overview description-->
             <TextView
@@ -93,11 +94,39 @@
                 android:layout_marginTop="16dp"
                 android:id="@+id/tv_movie_overview_description"
                 android:layout_below="@id/tv_release_date"
-                android:text="Movie Description"/>
+                android:text="Movie Description"
+                android:textSize="@dimen/text_size_18"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_movie_details"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTop"
+                android:textSize="@dimen/text_size_16"
+                android:id="@+id/tv_movie_vote_average"
+                android:text="6.5"/>
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:id="@+id/img_vote_average"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/star"
+                android:layout_toRightOf="@id/tv_movie_vote_average"/>
 
 
         </RelativeLayout>
 
     </RelativeLayout>
+
+   </android.support.v7.widget.CardView>
 
 </RelativeLayout>
