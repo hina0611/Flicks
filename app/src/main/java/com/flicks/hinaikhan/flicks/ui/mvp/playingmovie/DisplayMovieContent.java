@@ -1,40 +1,25 @@
 package com.flicks.hinaikhan.flicks.ui.mvp.playingmovie;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.flicks.hinaikhan.flicks.R;
-import com.flicks.hinaikhan.flicks.data.handler.TrailersHandler;
-import com.flicks.hinaikhan.flicks.data.model.response.MovieResponse;
 import com.flicks.hinaikhan.flicks.data.model.response.MovieResultResponse;
 import com.flicks.hinaikhan.flicks.data.trailers.TrailersResponse;
 import com.flicks.hinaikhan.flicks.ui.adapters.CustomMovieAdapter;
 import com.flicks.hinaikhan.flicks.ui.mvp.playingmovie.youtube.YoutubePlayActivity;
 import com.flicks.hinaikhan.flicks.util.AppUtil;
 import com.squareup.picasso.Picasso;
-
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
-
-import static android.R.attr.width;
-import static android.R.id.message;
-import static java.security.AccessController.getContext;
-import static okhttp3.internal.Internal.instance;
 
 /**
  * Created by hinaikhan on 9/16/17.
@@ -65,10 +50,6 @@ public class DisplayMovieContent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_play_movie);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -134,22 +115,27 @@ public class DisplayMovieContent extends AppCompatActivity {
             mTvMovieName.setText(movieResultResponse.getTitle());
             mTvOverviewDescription.setText(movieResultResponse.getOverview());
 
-            DisplayMetrics displayMetrics = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            int width = displayMetrics.widthPixels;
+            if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+                String imgUrl = AppUtil.getMovieImgUrl(this, AppUtil.getMovieItemType(movieResultResponse), movieResultResponse);
+                Picasso.with(this).load(imgUrl).
+                        transform(new RoundedCornersTransformation(10, 10)).
+                        placeholder(R.drawable.placeholder).
+                        resize(800, 900).
+                        centerCrop().into(imgTrailerItem);
+            }  else {
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                int width = displayMetrics.widthPixels;
 
-            String imgUrl = AppUtil.getMovieImgUrl(this, AppUtil.getMovieItemType(movieResultResponse), movieResultResponse);
-            Picasso.with(this).load(imgUrl).
-                    transform(new RoundedCornersTransformation(10, 10)).
-                    placeholder(R.drawable.placeholder).
-                    resize(width, 800).
-                    centerCrop().into(imgTrailerItem);
+                String imgUrl = AppUtil.getMovieImgUrl(this, AppUtil.getMovieItemType(movieResultResponse), movieResultResponse);
+                Picasso.with(this).load(imgUrl).
+                        transform(new RoundedCornersTransformation(10, 10)).
+                        placeholder(R.drawable.placeholder).
+                        resize(width, 800).
+                        centerCrop().into(imgTrailerItem);
+            }
         }
     }
-
-
-
-
 
     private void fetchTrailers(){
         TrailersPresenter presenter = new TrailersPresenter(this);

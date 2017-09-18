@@ -1,10 +1,7 @@
 package com.flicks.hinaikhan.flicks.ui.mvp.playingmovie;
 
 
-import android.view.View;
-
 import com.flicks.hinaikhan.flicks.data.handler.TrailersHandler;
-import com.flicks.hinaikhan.flicks.data.model.response.MovieResponse;
 import com.flicks.hinaikhan.flicks.data.model.response.MovieResultResponse;
 import com.flicks.hinaikhan.flicks.data.trailers.TrailersResponse;
 

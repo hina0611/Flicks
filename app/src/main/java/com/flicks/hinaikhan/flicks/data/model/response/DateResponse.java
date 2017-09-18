@@ -1,7 +1,5 @@
 package com.flicks.hinaikhan.flicks.data.model.response;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 
 /**
  * Created by hinaikhan on 9/15/17.

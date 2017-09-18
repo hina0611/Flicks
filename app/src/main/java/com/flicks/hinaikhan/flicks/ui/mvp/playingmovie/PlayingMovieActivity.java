@@ -5,13 +5,10 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import com.flicks.hinaikhan.flicks.R;
 import com.flicks.hinaikhan.flicks.util.AppUtil;
 import com.flicks.hinaikhan.flicks.util.Constant;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**

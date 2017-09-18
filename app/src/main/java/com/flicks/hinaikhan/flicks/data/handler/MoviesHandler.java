@@ -1,16 +1,12 @@
 package com.flicks.hinaikhan.flicks.data.handler;
 
 import android.util.Log;
-import android.widget.TextView;
-
 import com.flicks.hinaikhan.flicks.R;
 import com.flicks.hinaikhan.flicks.data.model.response.MovieResponse;
 import com.flicks.hinaikhan.flicks.ui.mvp.playingmovie.PlayingMoviePresenter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import java.io.IOException;
-
 import okhttp3.Call;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
@@ -63,13 +59,10 @@ public class MoviesHandler  {
                                     Gson gson = new GsonBuilder().create();
                                     MovieResponse movieResponse = gson.fromJson(responseData, MovieResponse.class);
                                     Log.d(TAG, "Movie responses " + movieResponse.toString());
-
                                     presenter.postResults(movieResponse);
                                 }
                             }
                     );
-
-
 
                 }
             }

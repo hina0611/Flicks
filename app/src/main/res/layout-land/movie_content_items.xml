@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/img_list_items"
-                android:src="@drawable/facebook"
+
                 />
 
 
@@ -71,7 +71,8 @@
                         android:textSize="@dimen/text_size_18"
                         android:textColor="#1F618D"
                         android:textStyle="normal"
-                        android:text="Release date"/>
+                        android:text="Release date"
+                        android:layout_alignBottom="@+id/img_release_date" />
 
 
                     <!--movie overview description-->

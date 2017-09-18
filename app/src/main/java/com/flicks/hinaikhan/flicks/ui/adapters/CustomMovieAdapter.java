@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.Icon;
-import android.provider.SyncStateContract;
 import android.support.v7.widget.CardView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -13,35 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.flicks.hinaikhan.flicks.R;
 import com.flicks.hinaikhan.flicks.data.model.response.MovieResultResponse;
 import com.flicks.hinaikhan.flicks.ui.mvp.playingmovie.DisplayMovieContent;
 import com.flicks.hinaikhan.flicks.util.AppUtil;
 import com.flicks.hinaikhan.flicks.util.Constant;
 import com.squareup.picasso.Picasso;
-
-import java.sql.Date;
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
-import static android.R.attr.data;
-import static android.R.attr.moreIcon;
-import static android.R.attr.offset;
-import static android.R.attr.orientation;
-import static android.R.attr.start;
-import static android.R.attr.theme;
-import static android.R.attr.width;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
-import static com.flicks.hinaikhan.flicks.R.id.tv_movie_title;
-import static com.flicks.hinaikhan.flicks.R.id.tv_release_date;
-import static com.flicks.hinaikhan.flicks.util.Constant.TYPE_NORMAL;
-import static com.flicks.hinaikhan.flicks.util.Constant.TYPE_POPULAR;
 
 /**
  * Created by hinaikhan on 9/15/17.
@@ -154,25 +132,7 @@ public class CustomMovieAdapter extends ArrayAdapter<MovieResultResponse> {
                     into(viewHolder.mIvMovieImage);
         }
 
-
-
-
-
         return convertView;
-
     }
 
-
-
-
-    private View getTypeOfView(int type) {
-        //listview
-        if(type == Constant.TYPE_NORMAL) {
-            return LayoutInflater.from(mContext).inflate(R.layout.fragment_list_view, null);
-        }
-        if(type == Constant.TYPE_POPULAR) {
-            return LayoutInflater.from(mContext).inflate(R.layout.movie_content_items, null);
-        }
-        return null;
-    }
 }

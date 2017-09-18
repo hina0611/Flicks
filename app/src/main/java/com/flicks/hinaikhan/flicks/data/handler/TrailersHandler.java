@@ -1,19 +1,13 @@
 package com.flicks.hinaikhan.flicks.data.handler;
 
-import android.graphics.Movie;
 import android.util.Log;
-
 import com.flicks.hinaikhan.flicks.R;
-import com.flicks.hinaikhan.flicks.data.model.response.MovieResponse;
 import com.flicks.hinaikhan.flicks.data.model.response.MovieResultResponse;
 import com.flicks.hinaikhan.flicks.data.trailers.TrailersResponse;
-import com.flicks.hinaikhan.flicks.ui.mvp.playingmovie.PlayingMoviePresenter;
 import com.flicks.hinaikhan.flicks.ui.mvp.playingmovie.TrailersPresenter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import java.io.IOException;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
