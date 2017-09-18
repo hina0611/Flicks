@@ -3,7 +3,6 @@ package com.flicks.hinaikhan.flicks.ui.mvp.playingmovie;
 
 import android.view.View;
 
-import com.flicks.hinaikhan.flicks.data.handler.MoviesHandler;
 import com.flicks.hinaikhan.flicks.data.handler.TrailersHandler;
 import com.flicks.hinaikhan.flicks.data.model.response.MovieResponse;
 import com.flicks.hinaikhan.flicks.data.model.response.MovieResultResponse;

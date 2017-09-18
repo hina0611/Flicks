@@ -24,7 +24,7 @@ import static com.flicks.hinaikhan.flicks.util.Constant.TYPE_POPULAR;
  * Created by hinaikhan on 9/16/17.
  */
 
-public class AppUtil  {
+public class AppUtil {
 
     public static void displayFragment(Fragment displayFragment, FragmentManager mFragmentManager, Bundle mBundle) {
 
@@ -33,7 +33,7 @@ public class AppUtil  {
         }
         displayFragment.setArguments(mBundle);
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-       fragmentTransaction.replace(R.id.frame_content, displayFragment);
+        fragmentTransaction.replace(R.id.frame_content, displayFragment);
 
         fragmentTransaction.commit();
 
@@ -42,11 +42,11 @@ public class AppUtil  {
 
     public static String formatDate(Date date) {
 
-        if(date != null){
-            try{
+        if (date != null) {
+            try {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-DD");
                 return simpleDateFormat.format(date);
-            }catch (Exception ex){
+            } catch (Exception ex) {
 
             }
         }
@@ -60,18 +60,18 @@ public class AppUtil  {
 
     public static String getMovieImgUrl(Context context, int itemViewType, MovieResultResponse movieResultResponse) {
         String imgUrl = "";
-        if(itemViewType == TYPE_NORMAL) {
+        if (itemViewType == TYPE_NORMAL) {
             int imgOrientation = context.getResources().getConfiguration().orientation;
             if (imgOrientation == Configuration.ORIENTATION_PORTRAIT) {
                 imgUrl = String.format("https://image.tmdb.org/t/p/w342%s", movieResultResponse.getPosterPath());
             } else {
                 imgUrl = String.format("https://image.tmdb.org/t/p/w500%s", movieResultResponse.getBackDropPath());
             }
-        }
-        else {
+        } else {
             imgUrl = String.format("https://image.tmdb.org/t/p/w500%s", movieResultResponse.getBackDropPath());
         }
 
         return imgUrl;
     }
+
 }

@@ -1,7 +1,11 @@
 package com.flicks.hinaikhan.flicks.ui.mvp.playingmovie.youtube;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.flicks.hinaikhan.flicks.R;
 import com.flicks.hinaikhan.flicks.data.trailers.TrailersResponse;
@@ -10,6 +14,7 @@ import com.flicks.hinaikhan.flicks.util.Constant;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerFragment;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import java.util.Arrays;
@@ -17,25 +22,41 @@ import java.util.Arrays;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.provider.MediaStore.Video.Thumbnails.VIDEO_ID;
+
 /**
  * Created by hinaikhan on 9/17/17.
  */
 
-public class YoutubePlayActivity extends YouTubeBaseActivity {
+public class YoutubePlayActivity extends YouTubeBaseActivity{
 
     private final String TAG = YoutubePlayActivity.class.getSimpleName();
 
-    @BindView(R.id.youtube_player)
-    YouTubePlayerView youTubePlayer;
 
+    private YouTubePlayerView youTubePlayer;
+    private ImageView imgClosePlayer;
     private TrailersResultsResponse[] mTrailersResultsResponses;
 
     @Override
     protected void onCreate(Bundle bundle) {
+
+//        YouTubePlayerFragment youtubeFragment = (YouTubePlayerFragment)
+//                getFragmentManager().findFragmentById(R.id.detail_player);
+
+
+
+
         super.onCreate(bundle);
         setContentView(R.layout.youtube_player_activity);
-        Log.d(TAG, "in Youtube player");
-        ButterKnife.bind(this);
+
+        youTubePlayer = (YouTubePlayerView) findViewById(R.id.youtube_player);
+        imgClosePlayer = (ImageView) findViewById(R.id.img_close_player);
+        imgClosePlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -73,6 +94,8 @@ public class YoutubePlayActivity extends YouTubeBaseActivity {
                     }
                 });
     }
+
+
 
 }
 

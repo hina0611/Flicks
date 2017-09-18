@@ -1,49 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#EFEBE9"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:titleTextColor="@android:color/white"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--android:background="?attr/colorPrimary">-->
+
+    <!--</android.support.v7.widget.Toolbar>-->
 
 
     <RelativeLayout
+        android:id="@+id/relative_user_score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:id="@+id/relative_user_score"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="18dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="6dp">
 
         <ImageView
+            android:id="@+id/img_view_trailer_item"
+            android:layout_width="match_parent"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/facebook" />
+
+        <!--text for user score-->
+        <TextView
+            android:id="@+id/tv_user_score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/img_view_trailer_item"
-            android:src="@drawable/facebook"/>
+            android:layout_below="@id/img_view_trailer_item"
+            android:layout_marginLeft="16dp"
+            android:textColor="#1C2833"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:text="@string/user_score"
+            android:textSize="@dimen/text_size_18" />
 
-            <!--text for user score-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/img_view_trailer_item"
-                android:layout_margin="16dp"
-                android:id="@+id/tv_user_score"
-                android:textSize="@dimen/text_size_22"
-                android:text="@string/user_score"/>
-
-            <!--rating bar-->
-            <RatingBar
-                android:id="@+id/ratingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="4"
-                android:scaleX="0.5"
-                android:scaleY="0.5"
-                android:stepSize="1.0"
-                android:rating="2.0"
-                android:layout_below="@+id/img_view_trailer_item"
-                android:layout_alignRight="@+id/tv_user_score"
-                android:layout_alignEnd="@+id/tv_user_score"
-                android:layout_marginRight="12dp"
-                android:layout_marginEnd="52dp" />
+        <!--rating bar-->
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/tv_user_score"
+            android:layout_alignRight="@+id/tv_user_score"
+            android:layout_below="@+id/img_view_trailer_item"
+            android:layout_marginRight="90dp"
+            android:numStars="4"
+            android:rating="2.0"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:stepSize="1.0" />
 
     </RelativeLayout>
 
@@ -54,26 +76,27 @@
         android:id="@+id/relative_movie_overview_title" >
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/movie_title"
-            android:layout_marginLeft="16dp"
-            android:id="@+id/tv_tile"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="16dp"
-            android:textSize="@dimen/text_size_20"/>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/movie_title"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:id="@+id/tv_tile"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:textSize="@dimen/text_size_20"/>-->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name"
             android:layout_marginLeft="16dp"
-            android:layout_toRightOf="@id/tv_tile"
+            android:textColor="#1C2833"
+            android:textStyle="bold"
             android:id="@+id/tv_name"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="16dp"
-            android:textSize="@dimen/text_size_20"/>
+            android:textSize="24sp"/>
 
 
 
@@ -82,48 +105,62 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:id="@+id/tv_overview_description"
+            android:textColor="#566573"
             android:layout_below="@+id/tv_name"
             android:layout_marginRight="16dp"
-            android:textSize="@dimen/text_size_16"
+            android:textSize="@dimen/text_size_18"
             android:text="Overview Description"/>
 
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/relative_images_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/relative_images_layout"
-        android:layout_marginTop="16dp"
-        android:layout_below="@id/relative_movie_overview_title">
+        android:layout_below="@id/relative_movie_overview_title"
+        android:layout_gravity="center"
+        android:layout_marginTop="22dp"
+        >
+
+        <!--<ImageView-->
+            <!--android:id="@+id/img_wishlist"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_marginLeft="36dp"-->
+            <!--android:src="@drawable/wish_list" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/img_favourite"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginLeft="65dp"-->
+            <!--android:layout_toRightOf="@id/img_wishlist"-->
+            <!--android:src="@drawable/favorite" />-->
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="55dp"
-            android:id="@+id/img_wishlist"
-            android:src="@drawable/wish_list"/>
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_toRightOf="@id/img_wishlist"
-            android:layout_marginLeft="55dp"
-            android:id="@+id/img_favourite"
-            android:src="@drawable/favorite"/>
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_toRightOf="@id/img_favourite"
-            android:layout_marginLeft="55dp"
-            android:layout_marginRight="55dp"
             android:id="@+id/img_play_trailer"
-            android:src="@drawable/calender"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="155dp"
+            android:src="@drawable/calender" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="8dp"
+            android:textColor="#1C2833"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_below="@id/img_play_trailer"
+            android:text="@string/play_trailer"/>
 
 
     </RelativeLayout>
 
 
 </LinearLayout>
+
+    </ScrollView>
 

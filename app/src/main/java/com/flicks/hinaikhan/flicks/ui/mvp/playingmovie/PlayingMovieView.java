@@ -45,8 +45,13 @@ public class PlayingMovieView extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_list_view, container, false);
         unbinder = ButterKnife.bind(this, view);
-        fetchMovies();
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        fetchMovies();
     }
 
     @Override public void onDestroyView() {

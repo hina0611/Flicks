@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Icon;
 import android.provider.SyncStateContract;
+import android.support.v7.widget.CardView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,7 @@ import static android.R.attr.offset;
 import static android.R.attr.orientation;
 import static android.R.attr.start;
 import static android.R.attr.theme;
+import static android.R.attr.width;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 import static com.flicks.hinaikhan.flicks.R.id.tv_movie_title;
 import static com.flicks.hinaikhan.flicks.R.id.tv_release_date;
@@ -50,35 +52,6 @@ public class CustomMovieAdapter extends ArrayAdapter<MovieResultResponse> {
     private final String TAG = CustomMovieAdapter.class.getSimpleName();
 
     private Context mContext;
-    private ImageView mIvMovieImage;
-    private TextView mTvMovieTitle;
-    private TextView mTvMovieVoteAverage;
-    private ImageView mIvMovieStar;
-    private ImageView mIvMovieReleaseDate;
-    private TextView mTvReleaseDate;
-    private TextView mTvMovieOverviewDescription;
-    private RelativeLayout mRelativeMovieContainer;
-
-//    static class ViewHolder {
-//        @BindView(R.id.img_list_items)
-//        ImageView mIvMovieImage;
-//        @BindView(R.id.tv_movie_title)
-//        TextView mTvMovieTitle;
-//        @BindView(R.id.tv_movie_vote_average)
-//        TextView mTvMovieVoteAverage;
-//        @BindView(R.id.img_vote_average)
-//        ImageView mIvMovieStar;
-//        @BindView(R.id.img_release_date)
-//        ImageView mIvMovieReleaseDate;
-//        @BindView(tv_release_date)
-//        TextView mTvReleaseDate;
-//        @BindView(R.id.tv_movie_overview_description)
-//        TextView mTvMovieOverviewDescription;
-//
-//        public ViewHolder(View view) {
-//            ButterKnife.bind(this, view);
-//        }
-//    }
 
 
     public CustomMovieAdapter(MovieResultResponse[] mResultResponse, Context mContext) {
@@ -103,21 +76,52 @@ public class CustomMovieAdapter extends ArrayAdapter<MovieResultResponse> {
         return Constant.MOVIE_COUNT;
     }
 
+    private static class ViewHolder {
+        private ImageView mIvMovieImage;
+        private TextView mTvMovieTitle;
+        private TextView mTvMovieVoteAverage;
+        private ImageView mIvMovieStar;
+        private ImageView mIvMovieReleaseDate;
+        private TextView mTvReleaseDate;
+        private TextView mTvMovieOverviewDescription;
+        private CardView mCardViewContainer;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        final MovieResultResponse movieResultResponse = getItem(position);
-        View view = LayoutInflater.from(mContext).inflate(R.layout.movie_content_items, parent, false);
 
-         mIvMovieImage = (ImageView) view.findViewById(R.id.img_list_items);
-         mTvMovieTitle = (TextView) view.findViewById(R.id.tv_movie_title);
-         mTvMovieVoteAverage = (TextView) view.findViewById(R.id.tv_movie_vote_average);
-         mIvMovieStar = (ImageView) view.findViewById(R.id.img_vote_average);
-         mIvMovieReleaseDate = (ImageView) view.findViewById(R.id.img_release_date);
-         mTvReleaseDate = (TextView) view.findViewById(R.id.tv_release_date);
-         mTvMovieOverviewDescription = (TextView) view.findViewById(R.id.tv_movie_overview_description);
-         mRelativeMovieContainer = (RelativeLayout) view.findViewById(R.id.realtive_container_layout);
-            mRelativeMovieContainer.setOnClickListener(new View.OnClickListener() {
+        final MovieResultResponse movieResultResponse = getItem(position);
+
+        ViewHolder viewHolder; // view lookup cache stored in tag
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.movie_content_items, parent, false);
+
+            viewHolder.mIvMovieImage = (ImageView) convertView.findViewById(R.id.img_list_items);
+            viewHolder.mTvMovieTitle = (TextView) convertView.findViewById(R.id.tv_movie_title);
+            viewHolder.mTvMovieVoteAverage = (TextView) convertView.findViewById(R.id.tv_movie_vote_average);
+            viewHolder.mIvMovieStar = (ImageView) convertView.findViewById(R.id.img_vote_average);
+            viewHolder.mIvMovieReleaseDate = (ImageView) convertView.findViewById(R.id.img_release_date);
+            viewHolder.mTvReleaseDate = (TextView) convertView.findViewById(R.id.tv_release_date);
+            viewHolder.mTvMovieOverviewDescription = (TextView) convertView.findViewById(R.id.tv_movie_overview_description);
+            viewHolder.mCardViewContainer = (CardView) convertView.findViewById(R.id.card_view_movie_container);
+
+            convertView.setTag(viewHolder);
+
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
+        if(getItemViewType(position) == Constant.TYPE_NORMAL) {
+            viewHolder.mTvMovieTitle.setText(movieResultResponse.getTitle());
+            viewHolder.mTvReleaseDate.setText(AppUtil.formatDate(movieResultResponse.getReleaseDate()));
+            viewHolder.mTvMovieOverviewDescription.setText(movieResultResponse.getOverview());
+            viewHolder.mTvMovieVoteAverage.setText(movieResultResponse.getVoteAverage() + " ");
+
+        }
+
+        viewHolder.mCardViewContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, DisplayMovieContent.class);
@@ -127,29 +131,48 @@ public class CustomMovieAdapter extends ArrayAdapter<MovieResultResponse> {
             }
         });
 
-        if(getItemViewType(position) == Constant.TYPE_NORMAL) {
-            mTvMovieTitle.setText(movieResultResponse.getTitle());
-            mTvReleaseDate.setText(AppUtil.formatDate(movieResultResponse.getReleaseDate()));
-            mTvMovieOverviewDescription.setText(movieResultResponse.getOverview());
-            mTvMovieVoteAverage.setText(movieResultResponse.getVoteAverage() + " ");
 
+        if(mContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            String imgUrl = AppUtil.getMovieImgUrl(mContext, getItemViewType(position), movieResultResponse);
+            Picasso.with(mContext).load(imgUrl).
+                    transform(new RoundedCornersTransformation(10, 10)).
+                    placeholder(R.drawable.placeholder).
+                    resize(800, 800).
+                    centerCrop().
+                    into(viewHolder.mIvMovieImage);
+        }  else {
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            ((Activity)mContext).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            int width = displayMetrics.widthPixels;
+
+            String imgUrl = AppUtil.getMovieImgUrl(mContext, getItemViewType(position), movieResultResponse);
+            Picasso.with(mContext).load(imgUrl).
+                    transform(new RoundedCornersTransformation(10, 10)).
+                    placeholder(R.drawable.placeholder).
+                    resize(width, 800).
+                    centerCrop().
+                    into(viewHolder.mIvMovieImage);
         }
 
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((Activity)mContext).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int width = displayMetrics.widthPixels;
 
 
-        String imgUrl = AppUtil.getMovieImgUrl(mContext, getItemViewType(position), movieResultResponse);
-        Picasso.with(mContext).load(imgUrl).
-                transform(new RoundedCornersTransformation(10, 10)).
-                placeholder(R.drawable.placeholder).
-                resize(width, 800).
-                centerCrop().
-                into(mIvMovieImage);
 
 
-        return view;
+        return convertView;
 
+    }
+
+
+
+
+    private View getTypeOfView(int type) {
+        //listview
+        if(type == Constant.TYPE_NORMAL) {
+            return LayoutInflater.from(mContext).inflate(R.layout.fragment_list_view, null);
+        }
+        if(type == Constant.TYPE_POPULAR) {
+            return LayoutInflater.from(mContext).inflate(R.layout.movie_content_items, null);
+        }
+        return null;
     }
 }
