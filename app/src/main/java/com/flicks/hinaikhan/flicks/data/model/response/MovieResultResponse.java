@@ -33,11 +33,11 @@ public class MovieResultResponse  implements Serializable {
     private boolean adult;
     private String overview;
     @SerializedName("release_date")
-    private Date releaseDate;
+    private String releaseDate;
 
     public MovieResultResponse(int voteCount, int id, boolean video, float voteAverage, String title, double popularity, String posterPath, String originalLanguage,
                                String originalTitle, int[] movieGenreIDs,
-                               String backDropPath, boolean adult, String overview, Date releaseDate) {
+                               String backDropPath, boolean adult, String overview, String releaseDate) {
         this.voteCount = voteCount;
         this.id = id;
         this.video = video;
@@ -158,11 +158,11 @@ public class MovieResultResponse  implements Serializable {
         this.overview = overview;
     }
 
-    public Date getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#EFEBE9"
     android:layout_width="match_parent"
@@ -64,16 +62,6 @@
         android:id="@+id/relative_movie_overview_title" >
 
 
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/movie_title"-->
-            <!--android:layout_marginLeft="16dp"-->
-            <!--android:id="@+id/tv_tile"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:layout_marginRight="16dp"-->
-            <!--android:textSize="@dimen/text_size_20"/>-->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,7 +93,7 @@
     <RelativeLayout
         android:id="@+id/relative_images_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/relative_movie_overview_title"
         android:layout_gravity="center"
         android:layout_marginTop="22dp"
@@ -125,6 +113,7 @@
             android:layout_marginTop="8dp"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
+            android:layout_marginBottom="30dp"
             android:textStyle="bold"
             android:layout_below="@id/img_play_trailer"
             android:text="@string/play_trailer"/>

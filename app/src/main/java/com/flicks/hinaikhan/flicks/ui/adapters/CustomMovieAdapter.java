@@ -19,6 +19,7 @@ import com.flicks.hinaikhan.flicks.util.AppUtil;
 import com.flicks.hinaikhan.flicks.util.Constant;
 import com.squareup.picasso.Picasso;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
+import java.util.Date;
 
 
 /**
@@ -93,7 +94,7 @@ public class CustomMovieAdapter extends ArrayAdapter<MovieResultResponse> {
 
         if(getItemViewType(position) == Constant.TYPE_NORMAL) {
             viewHolder.mTvMovieTitle.setText(movieResultResponse.getTitle());
-            viewHolder.mTvReleaseDate.setText(AppUtil.formatDate(movieResultResponse.getReleaseDate()));
+            viewHolder.mTvReleaseDate.setText(movieResultResponse.getReleaseDate());
             viewHolder.mTvMovieOverviewDescription.setText(movieResultResponse.getOverview());
             viewHolder.mTvMovieVoteAverage.setText(movieResultResponse.getVoteAverage() + " ");
 

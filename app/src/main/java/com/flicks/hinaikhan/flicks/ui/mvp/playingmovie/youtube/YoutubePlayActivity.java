@@ -40,12 +40,6 @@ public class YoutubePlayActivity extends YouTubeBaseActivity{
     @Override
     protected void onCreate(Bundle bundle) {
 
-//        YouTubePlayerFragment youtubeFragment = (YouTubePlayerFragment)
-//                getFragmentManager().findFragmentById(R.id.detail_player);
-
-
-
-
         super.onCreate(bundle);
         setContentView(R.layout.youtube_player_activity);
 
@@ -80,11 +74,6 @@ public class YoutubePlayActivity extends YouTubeBaseActivity{
                     public void onInitializationSuccess(YouTubePlayer.Provider provider,
                                                         YouTubePlayer youTubePlayer, boolean b) {
 
-                        // do any work here to cue video, play video, etc.
-                        //String[] sources = getIntent().getExtras().getStringArray(Constant.VIDEO_SOURCE);
-                        //Log.d(TAG, sources.toString());
-                        //youTubePlayer.cueVideos(Arrays.asList(sources));
-                        //youTubePlayer.cueVideo("5xVh-7ywKpE");
                         youTubePlayer.loadVideo(mTrailersResultsResponses[0].getKey());
                     }
                     @Override
@@ -94,7 +83,6 @@ public class YoutubePlayActivity extends YouTubeBaseActivity{
                     }
                 });
     }
-
 
 
 }
