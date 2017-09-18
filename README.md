@@ -44,6 +44,8 @@ https://imgur.com/a/wzW5e
 
 <img src='https://imgur.com/a/wzW5e' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+http://i.imgur.com/a/wzW5e/Play_Movie.gif
+
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
